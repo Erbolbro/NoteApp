@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".ui.fragments.noteapp.AddNoteFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingStart="19dp"
+        android:paddingEnd="19dp">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/black">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingEnd="19dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="20dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center|start"
+                    android:backgroundTint="@color/black"
+                    android:drawableBottom="@drawable/arrow1"
+                    android:paddingBottom="13dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|start"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/databs"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|start"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/time"
+                    android:textColor="@color/white_gray" />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <EditText
+            android:id="@+id/some_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="@string/napishi"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/some"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="textnapishi"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_home1"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_gravity="bottom|start"
+        android:layout_margin="20dp"
+        android:backgroundTint="#191818"
+        android:textSize="20sp"
+        app:cornerRadius="100dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_home2"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_gravity="bottom|center"
+        android:layout_margin="20dp"
+        android:backgroundTint="#EBE4C9"
+        android:textSize="20sp"
+        app:cornerRadius="100dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_home3"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="20dp"
+        android:backgroundTint="#571818"
+        android:textSize="20sp"
+        app:cornerRadius="100dp" />
+</FrameLayout>

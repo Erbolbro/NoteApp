@@ -3,4 +3,24 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tv_skip" />
+    <string name="skip">Пропустить</string>
+    <string name="notes">Заметки</string>
+    <string name="заметки">заметки\n</string>
+    <string name="tiltle">tiltle</string>
+    <string name="data">16 января \n 18:13</string>
+    <string name="title">title</string>
+    <string name="note">note</string>
+    <string name="plus">+</string>
+    <string name="search">поиск заметок</string>
+    <string name="may">30мая</string>
+    <string name="time">17:21</string>
+    <string name="doNeed">Нужно сделать :</string>
+    <string name="work">Работы с проектами</string>
+    <string name="databs">30 мая</string>
+    <string name="napishi">напишите текст</string>
+-    <string name="polujite_cod">Получить код</string>
+    <string name="code">Ваш код</string>
+    <string name="number">+996 - - - - - --</string>
+    <string name="phone">Ваш код</string>
+    <string name="poluchite_ode">Получить код</string>
 </resources>

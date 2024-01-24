@@ -1,3 +1,4 @@
+package com.example.kotlin3_3.ui.fragments.onboard
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,10 +8,14 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.kotlin3_3.R
 import com.example.kotlin3_3.databinding.FragmentOnBoardPagingBinding
+import com.example.kotlin3_3.ui.preference.PreferencesHelper
 
 class OnBoardPagingFragment : Fragment() {
 
     private var _binding: FragmentOnBoardPagingBinding? = null
+    private val preferencesHelper:PreferencesHelper by lazy {
+        PreferencesHelper(context?:requireContext())
+    }
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -48,8 +53,10 @@ class OnBoardPagingFragment : Fragment() {
     }
 
     private fun getStarted() = with(binding) {
+        preferencesHelper.isShownOnBoard = true
         tvStart.setOnClickListener {
             findNavController().navigate(R.id.action_onBoardFragment_to_noteAppFragment)
+
         }
     }
 

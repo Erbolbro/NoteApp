@@ -1,5 +1,5 @@
 package com.example.kotlin3_3.ui.adapters
-import OnBoardPagingFragment
+import com.example.kotlin3_3.ui.fragments.onboard.OnBoardPagingFragment
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
