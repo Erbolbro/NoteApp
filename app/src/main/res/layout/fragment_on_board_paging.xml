@@ -12,13 +12,13 @@
         android:id="@+id/animation_view"
         android:layout_width="350dp"
         android:layout_height="350dp"
-        android:background="@drawable/raunder2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"
+        android:background="@drawable/raunder2"
         app:lottie_autoPlay="true"
         app:lottie_imageAssetsFolder="images"
-        app:lottie_repeatMode="restart"
         app:lottie_loop="true"
+        app:lottie_repeatMode="restart"
         tools:lottie_rawRes="@raw/animation_first" />
 
     <TextView

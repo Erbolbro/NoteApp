@@ -36,5 +36,4 @@
         app:dotsSpacing="4dp"
         app:dotsStrokeColor="@color/gray"
         app:dotsStrokeWidth="2dp" />
-
 </RelativeLayout>

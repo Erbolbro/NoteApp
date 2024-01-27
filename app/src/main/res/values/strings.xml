@@ -23,4 +23,6 @@
     <string name="number">+996 - - - - - --</string>
     <string name="phone">Ваш код</string>
     <string name="poluchite_ode">Получить код</string>
+    <string name="registration">Регистрацию по номеру</string>
+    <string name="otprarvite">Отправить снова</string>
 </resources>

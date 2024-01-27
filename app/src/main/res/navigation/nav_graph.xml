@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/authenticationFragment">
+    app:startDestination="@id/noteAppFragment">
 
     <fragment
         android:id="@+id/onBoardFragment"
@@ -19,7 +19,7 @@
         android:id="@+id/noteAppFragment"
         android:name="com.example.kotlin3_3.ui.fragments.noteapp.NoteAppFragment"
         android:label="fragment_note_app"
-        tools:layout="@layout/fragment_note_app" >
+        tools:layout="@layout/fragment_note_app">
         <action
             android:id="@+id/action_noteAppFragment_to_addNoteFragment"
             app:destination="@id/addNoteFragment" />
@@ -30,13 +30,9 @@
         android:label="fragment_add_note"
         tools:layout="@layout/fragment_add_note" />
 
-    <fragment
-        android:id="@+id/authenticationFragment"
-        android:name="com.example.kotlin3_3.ui.fragments.firebase.AuthenticationFragment"
-        android:label="AuthenticationFragment" >
+
         <action
             android:id="@+id/action_authenticationFragment_to_noteAppFragment"
             app:destination="@id/noteAppFragment" />
-    </fragment>
 
 </navigation>
