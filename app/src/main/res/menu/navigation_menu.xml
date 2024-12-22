@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/shareFragment"
+            android:icon="@drawable/search"
+            android:title="Поделиться" />
+
+        <item
+            android:id="@+id/settingsFragment"
+            android:icon="@drawable/settings"
+            android:title="настройки" />
+    </group>
+    <group android:checkableBehavior="single">
+        <item android:title="">
+
+            <menu>
+                <item
+                    android:id="@+id/support"
+                    android:title="SUPPORT" />
+
+                <item
+                    android:id="@+id/devFragment"
+                    android:icon="@drawable/an_def"
+                    android:title=" О разроботчиках " />
+
+                <item
+                    android:id="@+id/exitFragment"
+                    android:icon="@drawable/closed"
+                    android:title=" выход " />
+            </menu>
+        </item>
+    </group>
+</menu>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".ui.fragments.firebase.signup.SignUpFragment">
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="130dp" />
+
+    <ImageView
+        android:id="@+id/iv_note"
+        android:layout_width="144dp"
+        android:layout_height="144dp"
+        android:layout_gravity="center"
+        android:src="@drawable/note" />
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="46dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/registration_email"
+        android:textColor="@color/gray"
+        android:textSize="18sp" />
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="70dp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/et_"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/grayText"
+        app:prefixTextColor="@color/grayText"
+        app:startIconDrawable="@drawable/person_add"
+        app:startIconTint="@color/gray">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/raunder_edit_text"
+            android:gravity="center_vertical"
+            android:hint="@string/enter_email"
+            android:inputType="text"
+            android:textColor="@color/grayText"
+            android:textSize="10sp"
+            tools:ignore="SmallSp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/put_number"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/grayText"
+        app:endIconMode="password_toggle"
+        app:prefixTextColor="@color/grayText"
+        app:startIconDrawable="@drawable/lock"
+        app:startIconTint="@color/gray">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/raunder_edit_text"
+            android:gravity="center_vertical"
+            android:hint="@string/enter_password"
+            android:inputType="textPassword"
+            android:textColor="@color/grayText"
+            android:textSize="10sp"
+            tools:ignore="SmallSp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_signIn"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/Yellow"
+        android:maxLines="1"
+        android:text="@string/signUp"
+        android:textColor="@color/white"
+        android:textSize="14sp" />
+
+    <!--    <TextView-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:gravity="center"-->
+    <!--        android:text=" у вас уже есть аккаунт?" />-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/tv_goToSignIn"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="10dp"-->
+    <!--        android:text="войти в аккаунт"-->
+    <!--        android:textColor="@color/Yellow"-->
+    <!--        android:textSize="16sp"-->
+    <!--        android:textStyle="bold" />-->
+</LinearLayout>
