@@ -7,11 +7,8 @@ import com.example.kotlin3_3.data.local.room.convertors.DateConvertors
 import com.example.kotlin3_3.data.local.room.dao.NoteDao
 import com.example.kotlin3_3.data.local.room.entities.Note
 
-
-@Database(entities = [Note::class], version = 1, exportSchema = false)
-
+@Database(entities = [Note::class], version = 10, exportSchema = false)
 @TypeConverters(DateConvertors::class)
-
 abstract class AppDatabase : RoomDatabase() {
     abstract fun noteDao(): NoteDao
 }

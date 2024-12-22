@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/registration_graph"
+    app:startDestination="@id/signUpFragment">
+
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.example.kotlin3_3.ui.fragments.firebase.signup.SignUpFragment"
+        android:label="SignUpFragment"
+        tools:layout="@layout/fragment_sign_up">
+        <action
+            android:id="@+id/action_signUpFragment_to_noteFlowFragment"
+            app:destination="@id/noteFlowFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.example.kotlin3_3.ui.fragments.firebase.signIn.SignInFragment"
+        android:label="SignInFragment"
+        tools:layout="@layout/fragment_sign_in" />
+
+    <fragment
+        android:id="@+id/onBoardFragment"
+        android:name="com.example.kotlin3_3.ui.fragments.onboard.OnBoardFragment"
+        android:label="OnBoardFragment">
+        <action
+            android:id="@+id/action_onBoardFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/noteFlowFragment"
+        android:name="com.example.kotlin3_3.ui.fragments.noteapp.NoteFlowFragment"
+        android:label="fragment_note_flow"
+        tools:layout="@layout/fragment_note_flow" />
+
+</navigation>

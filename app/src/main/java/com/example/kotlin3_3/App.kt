@@ -1,25 +1,18 @@
 package com.example.kotlin3_3
 
 import android.app.Application
-import androidx.room.Room
-import com.example.kotlin3_3.data.local.room.AppDatabase
-
-private const val DATABASE_NAME = "note_database"
+import com.example.kotlin3_3.di.appModule
+import com.example.kotlin3_3.di.repositoryModule
+import com.example.kotlin3_3.di.viewModelModule
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.GlobalContext.startKoin
 
 class App : Application() {
-
-    companion object {
-        var db: AppDatabase? = null
-    }
-
     override fun onCreate() {
         super.onCreate()
-        db = Room.databaseBuilder(
-            applicationContext,
-            AppDatabase::class.java,
-            DATABASE_NAME
-        ).allowMainThreadQueries()
-            .fallbackToDestructiveMigration()
-            .build()
+        startKoin {
+            androidContext(this@App)
+            modules(listOf(appModule, repositoryModule, viewModelModule))
+        }
     }
 }

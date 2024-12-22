@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/note_graph"
+    app:startDestination="@id/noteAppFragment">
+
+    <fragment
+        android:id="@+id/noteAppFragment"
+        android:name="com.example.kotlin3_3.ui.fragments.noteapp.get.NoteAppFragment"
+        android:label="NoteAppFragment">
+        <action
+            android:id="@+id/action_noteAppFragment_to_addNoteFragment"
+            app:destination="@id/addNoteFragment" />
+        <action
+            android:id="@+id/action_noteAppFragment_to_exitFragment"
+            app:destination="@id/exitFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_noteAppFragment_to_devFragment"
+            app:destination="@id/devFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_noteAppFragment_to_shareFragment"
+            app:destination="@id/shareFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_noteAppFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_noteAppFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addNoteFragment"
+        android:name="com.example.kotlin3_3.ui.fragments.noteapp.add.AddNoteFragment"
+        android:label="fragment_add_note"
+        tools:layout="@layout/fragment_add_note" />
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.kotlin3_3.ui.fragments.menu.settings.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/shareFragment"
+        android:name="com.example.kotlin3_3.ui.fragments.menu.share.ShareFragment"
+        android:label="fragment_share"
+        tools:layout="@layout/fragment_share" />
+    <fragment
+        android:id="@+id/devFragment"
+        android:name="com.example.kotlin3_3.ui.fragments.menu.dev.DevFragment"
+        android:label="fragment_dev"
+        tools:layout="@layout/fragment_dev" />
+    <fragment
+        android:id="@+id/exitFragment"
+        android:name="com.example.kotlin3_3.ui.fragments.menu.exit.ExitFragment"
+        android:label="fragment_exit"
+        tools:layout="@layout/fragment_exit" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.kotlin3_3.ui.fragments.menu.profile.ProfileFragment"
+        android:label="ProfileFragment" />
+    <fragment
+        android:id="@+id/noteFlowFragment"
+        android:name="com.example.kotlin3_3.ui.fragments.noteapp.NoteFlowFragment"
+        android:label="fragment_note_flow"
+        tools:layout="@layout/fragment_note_flow" >
+        <action
+            android:id="@+id/action_noteFlowFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+</navigation>

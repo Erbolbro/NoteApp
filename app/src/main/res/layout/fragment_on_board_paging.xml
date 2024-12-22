@@ -39,7 +39,7 @@
         android:layout_below="@id/tv_description"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
-        android:textColor="@color/orange"
+        android:textColor="@color/Yellow"
         android:textSize="20sp"
         android:textStyle="bold"
         tools:text="Начать работу" />

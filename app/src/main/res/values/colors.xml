@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
+    <color name="grayBlack">#191818</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="dark_gray">#FF131212</color>
-    <color name="gray">#FF191818</color>
-    <color name="orange">#FFD88B02</color>
-    <color name="white_gray">#B1B1B1</color>
-    <color name="dark_gray_et">#505050</color>
-    <color name="with2">#D1D0D0</color>
+    <color name="Yellow">#D88B02</color>
+    <color name="gray">#8E8B8B</color>
+    <color name="blackGray">#191818</color>
+    <color name="harmonies">#EBE4C9</color>
+    <color name="Burgundy">#571818</color>
+    <color name="grayText">#B1B1B1</color>
+    <color name="grayData"> #E6E6E6</color>
+    <color name="textGray"> #505050</color>
+
 </resources>

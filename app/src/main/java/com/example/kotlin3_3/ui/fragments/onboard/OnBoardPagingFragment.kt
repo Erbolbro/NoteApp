@@ -7,16 +7,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.kotlin3_3.R
+import com.example.kotlin3_3.data.preference.PreferencesHelper
 import com.example.kotlin3_3.databinding.FragmentOnBoardPagingBinding
-import com.example.kotlin3_3.ui.preference.PreferencesHelper
+import org.koin.android.ext.android.inject
 
 class OnBoardPagingFragment : Fragment() {
 
     private var _binding: FragmentOnBoardPagingBinding? = null
-    private val preferencesHelper:PreferencesHelper by lazy {
-        PreferencesHelper(context?:requireContext())
-    }
     private val binding get() = _binding!!
+    private val preferencesHelper: PreferencesHelper by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,28 +34,27 @@ class OnBoardPagingFragment : Fragment() {
     private fun initialize() = with(binding) {
         when (requireArguments().getInt(ARG_ONBOARD_PAGE_POSITION)) {
             0 -> {
-                tvDescription.text = "Очень удобный функционал"
+                tvDescription.text = getString(R.string.very_convenient_functionality)
                 animationView.setAnimation(R.raw.animation_first)
             }
 
             1 -> {
-                tvDescription.text = "Быстрый, качественный продукт"
+                tvDescription.text = getString(R.string.Fast_high_quality_product)
                 animationView.setAnimation(R.raw.animation_second)
             }
 
             2 -> {
-                tvDescription.text = "Куча функций и интересных фишек"
+                tvDescription.text = getString(R.string.lots_of_functions_and_interesting_features)
                 animationView.setAnimation(R.raw.animation_third)
-                tvStart.text = "Начать работу"
+                tvStart.text = getString(R.string.start_work)
             }
         }
     }
 
     private fun getStarted() = with(binding) {
-        preferencesHelper.isShownOnBoard = true
         tvStart.setOnClickListener {
-            findNavController().navigate(R.id.action_onBoardFragment_to_noteAppFragment)
-
+            preferencesHelper.isShownOnBoard = true
+            findNavController().navigate(R.id.action_onBoardFragment_to_signUpFragment)
         }
     }
 

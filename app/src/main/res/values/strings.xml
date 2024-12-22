@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Kotlin3_3</string>
+    <string name="app_name">Notes</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tv_skip" />
@@ -7,22 +7,40 @@
     <string name="notes">Заметки</string>
     <string name="заметки">заметки\n</string>
     <string name="tiltle">tiltle</string>
-    <string name="data">16 января \n 18:13</string>
+    <string name="data">16 января</string>
     <string name="title">title</string>
     <string name="note">note</string>
     <string name="plus">+</string>
     <string name="search">поиск заметок</string>
-    <string name="may">30мая</string>
     <string name="time">17:21</string>
     <string name="doNeed">Нужно сделать :</string>
     <string name="work">Работы с проектами</string>
     <string name="databs">30 мая</string>
     <string name="napishi">напишите текст</string>
--    <string name="polujite_cod">Получить код</string>
+    -
+    <string name="polujite_cod">Получить код</string>
     <string name="code">Ваш код</string>
     <string name="number">+996 - - - - - --</string>
     <string name="phone">Ваш код</string>
     <string name="poluchite_ode">Получить код</string>
     <string name="registration">Регистрацию по номеру</string>
     <string name="otprarvite">Отправить снова</string>
+    <string name="_18_10">18:10</string>
+    <string name="ready">Готово</string>
+    <string name="registration_email">Регистрация по email</string>
+    <string name="phoneNumber">+996</string>
+    <string name="sand_code">Отправить код</string>
+    <string name="sand_code_again">Отправить код снова</string>
+    <string name="start_work">Начать работу</string>
+    <string name="lots_of_functions_and_interesting_features">Куча функций и интересных фишек</string>
+    <string name="Fast_high_quality_product">Быстрый, качественный продукт</string>
+    <string name="very_convenient_functionality">Очень удобный функционал</string>
+    <string name="signUp">Зарегистрироваться</string>
+    <string name="login">Войти</string>
+    <string name="enter_email">Введите адресс электронной почты</string>
+    <string name="enter_password">введите пароль</string>
+    <string name="mvd_text">-Министерство внутренних дел КР Это приложение разработано для внутреннего использования сотрудниками внутренних дел КР. Основная цель - упрощение доступа к важной и конфиденциальной информации, необходимой для работы</string>
+    <string name="zarina_capital_text">-Это удобное и функциональное мобильное приложение, позволяющее пользователям приобретать курсы и просматривать видеоматериалы, предоставленные заказчиком.</string>
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
 </resources>

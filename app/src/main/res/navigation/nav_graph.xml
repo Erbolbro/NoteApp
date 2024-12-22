@@ -3,36 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/noteAppFragment">
+    app:startDestination="@id/noteFlowFragment">
 
     <fragment
-        android:id="@+id/onBoardFragment"
-        android:name="OnBoardFragment"
-        android:label="OnBoardFragment">
+        android:id="@+id/registrationFlowFragment"
+        android:name="com.example.kotlin3_3.ui.fragments.firebase.RegistrationFlowFragment"
+        android:label="fragment_registration_flow"
+        tools:layout="@layout/fragment_registration_flow">
 
         <action
-            android:id="@+id/action_onBoardFragment_to_noteAppFragment"
-            app:destination="@id/noteAppFragment" />
+            android:id="@+id/action_registrationFlowFragment_to_noteFlowFragment"
+            app:destination="@id/noteFlowFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/noteAppFragment"
-        android:name="com.example.kotlin3_3.ui.fragments.noteapp.NoteAppFragment"
-        android:label="fragment_note_app"
-        tools:layout="@layout/fragment_note_app">
-        <action
-            android:id="@+id/action_noteAppFragment_to_addNoteFragment"
-            app:destination="@id/addNoteFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/addNoteFragment"
-        android:name="com.example.kotlin3_3.ui.fragments.noteapp.AddNoteFragment"
-        android:label="fragment_add_note"
-        tools:layout="@layout/fragment_add_note" />
-
-
-        <action
-            android:id="@+id/action_authenticationFragment_to_noteAppFragment"
-            app:destination="@id/noteAppFragment" />
+        android:id="@+id/noteFlowFragment"
+        android:name="com.example.kotlin3_3.ui.fragments.noteapp.NoteFlowFragment"
+        android:label="fragment_note_flow"
+        tools:layout="@layout/fragment_note_flow" />
 
 </navigation>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".ui.fragments.noteapp.AddNoteFragment">
+    tools:context=".ui.fragments.noteapp.add.AddNoteFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,6 +25,7 @@
                 android:paddingEnd="19dp">
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnBack"
                     android:layout_width="20dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center|start"
@@ -33,21 +34,36 @@
                     android:paddingBottom="13dp" />
 
                 <TextView
+                    android:id="@+id/tvData"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center|start"
                     android:layout_marginStart="10dp"
+                    android:textSize="14sp"
                     android:text="@string/databs"
                     android:textColor="@color/white" />
 
                 <TextView
+                    android:id="@+id/tvTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center|start"
                     android:layout_marginStart="10dp"
+                    android:textSize="14sp"
                     android:text="@string/time"
-                    android:textColor="@color/white_gray" />
+                    android:textColor="@color/grayData" />
 
+                <TextView
+                    android:id="@+id/tvReady"
+                    android:layout_width="match_parent"
+                    android:text="@string/ready"
+                    android:textColor="@color/Yellow"
+                    android:textSize="16sp"
+                    android:layout_gravity="center|end"
+                    android:textStyle="bold"
+                    android:gravity="end"
+                    android:visibility="gone"
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
 
         </FrameLayout>
@@ -72,12 +88,14 @@
     </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_home1"
+        android:id="@+id/btn_Black"
         android:layout_width="100dp"
         android:layout_height="60dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:layout_gravity="bottom|start"
         android:layout_margin="20dp"
-        android:backgroundTint="#191818"
+        android:backgroundTint="@color/blackGray"
         android:textSize="20sp"
         app:cornerRadius="100dp" />
 
@@ -85,19 +103,24 @@
         android:id="@+id/btn_home2"
         android:layout_width="100dp"
         android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
         android:layout_gravity="bottom|center"
         android:layout_margin="20dp"
-        android:backgroundTint="#EBE4C9"
+        android:layout_marginStart="30dp"
+        android:layout_toStartOf="@+id/btn_Black"
+        android:layout_toEndOf="@+id/btn_burgundy"
+        android:backgroundTint="@color/harmonies"
         android:textSize="20sp"
         app:cornerRadius="100dp" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_home3"
+        android:id="@+id/btn_burgundy"
         android:layout_width="100dp"
         android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
         android:layout_gravity="bottom|end"
         android:layout_margin="20dp"
-        android:backgroundTint="#571818"
+        android:backgroundTint="@color/Burgundy"
         android:textSize="20sp"
         app:cornerRadius="100dp" />
-</FrameLayout>
+</RelativeLayout>
