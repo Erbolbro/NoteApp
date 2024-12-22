@@ -39,9 +39,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center|start"
                     android:layout_marginStart="10dp"
-                    android:textSize="14sp"
                     android:text="@string/databs"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/tvTime"
@@ -49,23 +49,10 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center|start"
                     android:layout_marginStart="10dp"
-                    android:textSize="14sp"
                     android:text="@string/time"
-                    android:textColor="@color/grayData" />
-
-                <TextView
-                    android:id="@+id/tvReady"
-                    android:layout_width="match_parent"
-                    android:text="@string/ready"
-                    android:textColor="@color/Yellow"
-                    android:textSize="16sp"
-                    android:layout_gravity="center|end"
-                    android:textStyle="bold"
-                    android:gravity="end"
-                    android:visibility="gone"
-                    android:layout_height="wrap_content"/>
+                    android:textColor="@color/grayData"
+                    android:textSize="14sp" />
             </LinearLayout>
-
         </FrameLayout>
 
         <EditText
@@ -73,7 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:hint="@string/napishi"
+            android:hint="@string/article_title"
             android:textColor="@color/white"
             android:textSize="18sp" />
 
@@ -81,7 +68,6 @@
             android:id="@+id/some"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="textnapishi"
             android:textColor="@color/white"
             android:textSize="18sp" />
 

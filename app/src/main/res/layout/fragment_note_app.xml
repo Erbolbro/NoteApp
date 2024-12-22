@@ -19,7 +19,7 @@
             android:padding="10dp">
 
             <com.google.android.material.appbar.AppBarLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/blackGray">
 
@@ -27,9 +27,13 @@
                     android:id="@+id/toolbar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="start"
-                    app:navigationIcon="@drawable/menu">
-
+                    android:gravity="start">
+                    <ImageView
+                        android:id="@+id/menu"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity=""
+                        android:src="@drawable/menu" />
                 </androidx.appcompat.widget.Toolbar>
             </com.google.android.material.appbar.AppBarLayout>
 
@@ -37,18 +41,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/заметки"
+                android:text="@string/notes"
                 android:textColor="@color/grayText"
-                android:textSize="16sp"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/iv_dird"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_gravity="center|end"
                 android:src="@drawable/iv_shape" />
-
         </FrameLayout>
 
         <EditText
@@ -75,8 +78,8 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnNoteApp"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom|end"

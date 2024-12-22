@@ -31,15 +31,15 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupObservers()
+//        setupObservers()
 
     }
-
-    private fun setupObservers() {
-        viewModel.userEmail.observe(viewLifecycleOwner) { email ->
-            binding.tvName.text = email
-        }
-    }
+//
+//    private fun setupObservers() {
+//        viewModel.userEmail.observe(viewLifecycleOwner) { email ->
+//            binding.tvName.text = email
+//        }
+//    }
 
     override fun onDestroyView() {
         super.onDestroyView()

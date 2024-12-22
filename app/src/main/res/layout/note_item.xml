@@ -2,12 +2,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginVertical="5dp">
+    android:layout_margin="10dp">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/colorNote"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         app:cardCornerRadius="20dp">
 
         <LinearLayout
@@ -21,34 +21,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:text="@string/tiltle"
-                android:textSize="16sp" />
+                android:text="@string/title"
+                android:textStyle="bold"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/tvNote"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-
-                android:text="@string/note"
-                android:textSize="12sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="end"
-            android:orientation="vertical">
+                android:text="@string/note" />
 
             <TextView
                 android:id="@+id/tvDateTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end|center"
+                android:layout_marginEnd="10dp"
                 android:text="@string/data"
-                android:textColor="@color/grayText"
+                android:textColor="@color/white"
                 android:textSize="12sp" />
 
             <TextView
@@ -56,8 +47,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end|center"
+                android:layout_marginEnd="10dp"
                 android:text="@string/_18_10"
-                android:textColor="@color/grayText"
+                android:textColor="@color/white"
                 android:textSize="12sp" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>

@@ -1,12 +1,9 @@
 <resources>
     <string name="app_name">Notes</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tv_skip" />
     <string name="skip">Пропустить</string>
     <string name="notes">Заметки</string>
-    <string name="заметки">заметки\n</string>
-    <string name="tiltle">tiltle</string>
     <string name="data">16 января</string>
     <string name="title">title</string>
     <string name="note">note</string>
@@ -15,16 +12,14 @@
     <string name="time">17:21</string>
     <string name="doNeed">Нужно сделать :</string>
     <string name="work">Работы с проектами</string>
-    <string name="databs">30 мая</string>
-    <string name="napishi">напишите текст</string>
-    -
+    <string name="databs">30 мая</string>-
     <string name="polujite_cod">Получить код</string>
     <string name="code">Ваш код</string>
     <string name="number">+996 - - - - - --</string>
     <string name="phone">Ваш код</string>
-    <string name="poluchite_ode">Получить код</string>
+    <string name="send_code">Получить код</string>
     <string name="registration">Регистрацию по номеру</string>
-    <string name="otprarvite">Отправить снова</string>
+    <string name="send">Отправить снова</string>
     <string name="_18_10">18:10</string>
     <string name="ready">Готово</string>
     <string name="registration_email">Регистрация по email</string>
@@ -43,4 +38,5 @@
     <string name="zarina_capital_text">-Это удобное и функциональное мобильное приложение, позволяющее пользователям приобретать курсы и просматривать видеоматериалы, предоставленные заказчиком.</string>
     <string name="nav_open">Open</string>
     <string name="nav_close">Close</string>
+    <string name="article_title">Заголовок</string>
 </resources>

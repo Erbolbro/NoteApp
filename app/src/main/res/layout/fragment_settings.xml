@@ -17,4 +17,10 @@
         android:backgroundTint="@color/black"
         android:drawableBottom="@drawable/arrow1"
         android:paddingBottom="13dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ПУСТО"
+        android:textSize="40sp" />
 </LinearLayout>

@@ -11,7 +11,6 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlin3_3.R
-import com.example.kotlin3_3.data.local.room.convertors.DateConvertors
 import com.example.kotlin3_3.data.local.room.entities.Note
 import com.example.kotlin3_3.databinding.NoteItemBinding
 
@@ -20,7 +19,6 @@ class NoteAdapter(private val onDeleteClick: (Note) -> Unit) :
 
     private var noteList = listOf<Note>()
     private var searchQuery: String = ""
-    private val convertors = DateConvertors()
 
     fun setNoteList(noteList: List<Note>) {
         this.noteList = noteList
@@ -41,8 +39,8 @@ class NoteAdapter(private val onDeleteClick: (Note) -> Unit) :
             try {
                 val color = Color.parseColor(notesModel.color)
                 binding.colorNote.setCardBackgroundColor(ColorStateList.valueOf(color))
-            }catch (e:IllegalArgumentException){
-                Log.e("tag", "ошибка в адаптере в самом цвете", )
+            } catch (e: IllegalArgumentException) {
+                Log.e("tag", "ошибка в адаптере в самом цвете")
             }
         }
 

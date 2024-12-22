@@ -38,41 +38,23 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
-//        if (savedInstanceState == null) {
-//            if (!preferencesHelper.isShownOnBoard) {
-//                navController.graph =
-//                    navController.navInflater.inflate(R.navigation.registration_graph).apply {
-//                        setStartDestination(R.id.onBoardFragment)
-//                    }
-//            } else {
-//                if (!preferencesHelper.isShownOnBoard) {
-//                    navController.graph =
-//                        navController.navInflater.inflate(R.navigation.registration_graph).apply {
-//                            setStartDestination(R.id.signUpFragment)
-//                        }
-//                    navController.graph
-//                }
-//            }
-//        } else {
-//            savedInstanceState.classLoader
-//        }
-//        if (!preferencesHelper.isShownOnBoard) {
-//            navController.graph =
-//                navController.navInflater.inflate(R.navigation.registration_graph).apply {
-//                    setStartDestination(R.id.onBoardFragment)
-//                }
-//
-//        } else {
-//            if (!preferencesHelper.isRegisterShow) {
-//                navController.graph =
-//                    navController.navInflater.inflate(R.navigation.registration_graph).apply {
-//                        setStartDestination(R.id.signUpFragment)
-//                    }
-//            } else {
-//                navController.graph = navController.navInflater.inflate(R.navigation.note_graph)
-//            }
-//        }
-//    }
+        val navGraph = navController.navInflater.inflate(R.navigation.nav_graph)
+        when {
+            !preferencesHelper.isShownOnBoard -> {
+                navGraph.setStartDestination(R.id.onBoardFragment)
+            }
+
+            else -> {
+                navGraph.setStartDestination(R.id.registrationFlowFragment)
+                if (!preferencesHelper.isRegisterShow
+                ) {
+                    navGraph.setStartDestination(R.id.registrationFlowFragment)
+                } else {
+                    navGraph.setStartDestination(R.id.noteFlowFragment)
+                }
+            }
+        }
+        navController.graph = navGraph
     }
 
     override fun onNewIntent(intent: Intent) {

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
@@ -39,10 +40,15 @@ class NoteFlowFragment : Fragment() {
     }
 
     private fun userProfile() {
+        val textHeader = binding.navView.getHeaderView(0)
+        val etText: TextView = textHeader.findViewById(R.id.et_email_fb)
         val user = fireBaseAuth.currentUser
         if (user != null) {
-            val email = user.email
+            etText.text = user.email ?: "not found"
+        } else {
+            etText.text = "user not sign in"
         }
+
     }
 
 

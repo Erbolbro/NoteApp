@@ -1,6 +1,5 @@
 package com.example.kotlin3_3.ui.fragments.noteapp.add
 
-import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -19,7 +18,6 @@ import org.koin.android.ext.android.inject
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
-import kotlin.math.log
 
 class AddNoteFragment : Fragment() {
 
@@ -41,12 +39,12 @@ class AddNoteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-     setDateTime()
+        setDateTime()
         observeViewModel()
         addYellowNote()
         addBlackNote()
         addBurgundy()
-        setupTextVisibility()
+//        setupTextVisibility()
         goBack()
     }
 
@@ -143,19 +141,19 @@ class AddNoteFragment : Fragment() {
         }
     }
 
-    private fun setupTextVisibility() = with(binding) {
-        val focusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
-            if (hasFocus) {
-                tvReady.visibility = View.VISIBLE
-            }
-        }
-        someId.onFocusChangeListener = focusChangeListener
-        some.onFocusChangeListener = focusChangeListener
-
-        tvReady.setOnClickListener {
-            tvReady.visibility = View.GONE
-        }
-    }
+//    private fun setupTextVisibility() = with(binding) {
+//        val focusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
+//            if (hasFocus) {
+//                tvReady.visibility = View.VISIBLE
+//            }
+//        }
+//        someId.onFocusChangeListener = focusChangeListener
+//        some.onFocusChangeListener = focusChangeListener
+//
+//        tvReady.setOnClickListener {
+//            tvReady.visibility = View.GONE
+//        }
+//    }
 
     private fun goBack() {
         binding.btnBack.setOnClickListener {

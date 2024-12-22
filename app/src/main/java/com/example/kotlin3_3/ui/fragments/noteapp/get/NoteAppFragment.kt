@@ -28,6 +28,18 @@ class NoteAppFragment : Fragment() {
     private val viewModel: NoteAppViewModel by inject()
     private lateinit var noteAdapter: NoteAdapter
     private var noteList = listOf<Note>()
+    private var isGridLayout = false
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        isGridLayout = savedInstanceState?.getBoolean("IS_GRID_LAYOUT") ?: false
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putBoolean("IS_GRID_LAYOUT", isGridLayout)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,12 +52,34 @@ class NoteAppFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val layoutManager = if (isGridLayout) {
+            androidx.recyclerview.widget.GridLayoutManager(requireContext(), 2)
+        } else {
+            androidx.recyclerview.widget.LinearLayoutManager(requireContext())
+        }
+        binding.rvNotes.layoutManager = layoutManager
         initAdapter()
         setupListeners()
         initViewModel()
         setupToolbar()
-        binding.toolbar.setNavigationOnClickListener{
-            findNavController().navigate(R.id.noteFlowFragment)
+        changeItem()
+    }
+
+    private fun changeItem() {
+        binding.ivDird.setOnClickListener {
+            Log.d("NoteAppFragment", "Button clicked")
+            isGridLayout = !isGridLayout
+            val layoutManager = if (isGridLayout) {
+                androidx.recyclerview.widget.GridLayoutManager(requireContext(), 2)
+            } else {
+                androidx.recyclerview.widget.LinearLayoutManager(requireContext())
+            }
+            binding.rvNotes.layoutManager = layoutManager
+
+            binding.ivDird.setImageResource(
+                if (isGridLayout) R.drawable.iv_shape else R.drawable.shape__9_
+            )
         }
     }
 
@@ -53,7 +87,9 @@ class NoteAppFragment : Fragment() {
         noteAdapter = NoteAdapter { note ->
             viewModel.deleteNote(note)
         }
-        binding.rvNotes.adapter = noteAdapter
+        binding.rvNotes.post {
+            binding.rvNotes.adapter = noteAdapter
+        }
     }
 
     private fun initViewModel() {
