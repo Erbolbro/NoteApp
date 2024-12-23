@@ -39,15 +39,15 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
         val navGraph = navController.navInflater.inflate(R.navigation.nav_graph)
+
         when {
             !preferencesHelper.isShownOnBoard -> {
-                navGraph.setStartDestination(R.id.onBoardFragment)
+                navGraph.setStartDestination(R.id.registrationFlowFragment)
             }
 
             else -> {
-                navGraph.setStartDestination(R.id.registrationFlowFragment)
-                if (!preferencesHelper.isRegisterShow
-                ) {
+                navGraph.setStartDestination(R.id.onBoardFragment)
+                if (!preferencesHelper.isRegisterShow) {
                     navGraph.setStartDestination(R.id.registrationFlowFragment)
                 } else {
                     navGraph.setStartDestination(R.id.noteFlowFragment)
@@ -56,7 +56,6 @@ class MainActivity : AppCompatActivity() {
         }
         navController.graph = navGraph
     }
-
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         intent.let {
@@ -68,13 +67,9 @@ class MainActivity : AppCompatActivity() {
                     val currentFragment =
                         navHostFragment?.childFragmentManager?.fragments?.firstOrNull()
                 }
-
             }
         }
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_note)
-        return navController.navigateUp() || super.onSupportNavigateUp()
-    }
+
 }

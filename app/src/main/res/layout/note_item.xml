@@ -18,18 +18,21 @@
 
             <TextView
                 android:id="@+id/tvTitleNote"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
                 android:text="@string/title"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="10dp"
                 android:textStyle="bold"
-                android:textSize="20sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tvNote"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="10dp"
+                android:textSize="14sp"
                 android:text="@string/note" />
 
             <TextView

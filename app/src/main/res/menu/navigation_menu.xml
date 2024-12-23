@@ -19,12 +19,12 @@
             <menu>
                 <item
                     android:id="@+id/support"
-                    android:title="SUPPORT" />
+                    android:title="SUPPORT"/>
 
                 <item
                     android:id="@+id/devFragment"
                     android:icon="@drawable/an_def"
-                    android:title=" О разроботчиках " />
+                    android:title=" О разработчиках " />
 
                 <item
                     android:id="@+id/exitFragment"

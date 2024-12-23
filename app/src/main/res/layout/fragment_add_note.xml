@@ -68,6 +68,7 @@
             android:id="@+id/some"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="текст"
             android:textColor="@color/white"
             android:textSize="18sp" />
 

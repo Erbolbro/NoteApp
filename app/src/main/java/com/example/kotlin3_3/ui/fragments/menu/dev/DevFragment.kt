@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.kotlin3_3.databinding.FragmentDevBinding
 
-
 class DevFragment : Fragment() {
     private var _binding: FragmentDevBinding? = null
     private val binding get() = _binding!!
@@ -18,7 +17,7 @@ class DevFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentDevBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -48,7 +47,7 @@ class DevFragment : Fragment() {
     }
 
     private fun goLinkedin() {
-        binding.linkedin.setOnClickListener{
+        binding.linkedin.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW)
             intent.data = Uri.parse("https://www.linkedin.com/in/erbol-ulanov-46ab3a324/")
             startActivity(intent)

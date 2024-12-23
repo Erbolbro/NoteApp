@@ -12,6 +12,7 @@
         tools:layout="@layout/fragment_sign_up">
         <action
             android:id="@+id/action_signUpFragment_to_noteFlowFragment"
+            app:popUpTo="@id/registration_graph"
             app:destination="@id/noteFlowFragment" />
     </fragment>
 
@@ -27,6 +28,7 @@
         android:label="OnBoardFragment">
         <action
             android:id="@+id/action_onBoardFragment_to_signUpFragment"
+            app:popUpTo="@id/registration_graph"
             app:destination="@id/signUpFragment" />
     </fragment>
 
