@@ -41,14 +41,13 @@ class NoteFlowFragment : Fragment() {
 
     private fun userProfile() {
         val textHeader = binding.navView.getHeaderView(0)
-        val etText: TextView = textHeader.findViewById(R.id.et_email_fb)
+        val etText: TextView = textHeader.findViewById(R.id.tv_header_email)
         val user = fireBaseAuth.currentUser
         if (user != null) {
             etText.text = user.email ?: "not found"
         } else {
             etText.text = "user not sign in"
         }
-
     }
 
 

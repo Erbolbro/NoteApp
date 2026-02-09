@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
@@ -17,19 +18,21 @@ import com.example.kotlin3_3.data.local.room.entities.Note
 import com.example.kotlin3_3.databinding.FragmentNoteAppBinding
 import com.example.kotlin3_3.ui.adapters.NoteAdapter
 import com.example.kotlin3_3.ui.fragments.intent.NoteIntent
+import com.example.kotlin3_3.data.preference.PreferencesHelper
 import com.example.kotlin3_3.utils.state.AddNoteState
 import com.example.kotlin3_3.utils.state.DeleteNoteState
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class NoteAppFragment : Fragment() {
 
     private var _binding: FragmentNoteAppBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: NoteAppViewModel by inject()
+    private val viewModel: NoteAppViewModel by viewModel()
+    private val preferencesHelper: PreferencesHelper by inject()
     private lateinit var noteAdapter: NoteAdapter
     private var noteList = listOf<Note>()
     private var isGridLayout = false
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,7 +71,6 @@ class NoteAppFragment : Fragment() {
 
     private fun changeItem() {
         binding.ivDird.setOnClickListener {
-            Log.d("NoteAppFragment", "Button clicked")
             isGridLayout = !isGridLayout
             val layoutManager = if (isGridLayout) {
                 androidx.recyclerview.widget.GridLayoutManager(requireContext(), 2)
@@ -76,7 +78,6 @@ class NoteAppFragment : Fragment() {
                 androidx.recyclerview.widget.LinearLayoutManager(requireContext())
             }
             binding.rvNotes.layoutManager = layoutManager
-
             binding.ivDird.setImageResource(
                 if (isGridLayout) R.drawable.iv_shape else R.drawable.shape__9_
             )
@@ -84,12 +85,37 @@ class NoteAppFragment : Fragment() {
     }
 
     private fun initAdapter() {
-        noteAdapter = NoteAdapter { note ->
-            viewModel.deleteNote(note)
-        }
+        noteAdapter = NoteAdapter(
+            onEditClick = { note -> navigateToEditNote(note) },
+            onDeleteClick = { note -> showDeleteConfirmation(note) }
+        )
+        noteAdapter.updateTextSize(preferencesHelper.textSize)
         binding.rvNotes.post {
             binding.rvNotes.adapter = noteAdapter
         }
+    }
+
+    private fun showDeleteConfirmation(note: Note) {
+        AlertDialog.Builder(requireContext())
+            .setTitle("Удаление заметки")
+            .setMessage("Вы уверены, что хотите удалить заметку \"${note.title}\"?")
+            .setPositiveButton("Удалить") { _, _ ->
+                viewModel.deleteNote(note)
+            }
+            .setNegativeButton("Отмена", null)
+            .show()
+    }
+
+    private fun navigateToEditNote(note: Note) {
+        val bundle = Bundle().apply {
+            putInt("noteId", note.id)
+            putString("noteTitle", note.title)
+            putString("noteDescription", note.description)
+            putString("noteDate", note.date)
+            putString("noteTime", note.time)
+            putString("noteColor", note.color)
+        }
+        findNavController().navigate(R.id.action_noteAppFragment_to_addNoteFragment, bundle)
     }
 
     private fun initViewModel() {
@@ -118,7 +144,7 @@ class NoteAppFragment : Fragment() {
 
                 is AddNoteState.Success -> {
                     noteList = state.data
-                    noteAdapter.setNoteList(noteList)
+                    noteAdapter.submitList(noteList.toList())
                     updateItemCount()
                 }
             }
@@ -150,7 +176,7 @@ class NoteAppFragment : Fragment() {
                 note.title.contains(query, ignoreCase = true)
             }
             noteAdapter.updateSearchQuery(query)
-            noteAdapter.setNoteList(filteredList)
+            noteAdapter.submitList(filteredList.toList())
             updateItemCount()
         }
         binding.btnNoteApp.setOnClickListener {

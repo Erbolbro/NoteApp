@@ -34,13 +34,13 @@ class SignUpViewModel(
             try {
                 authRepository.signUp(email, password)
                 _signUpState.value = AuthNoteState.Success("Successfully signed up")
-            } catch (e: Exception) {
-                _signUpState.value = AuthNoteState.Error(e.message ?: "Unknown error")
-                Log.e("SignUpViewModel", "Error signing up: ${e.message}")
             } catch (e: FirebaseAuthInvalidCredentialsException) {
                 _signUpState.value = AuthNoteState.Error("Invalid email format")
             } catch (e: FirebaseAuthWeakPasswordException) {
                 _signUpState.value = AuthNoteState.Error("Weak password")
+            } catch (e: Exception) {
+                _signUpState.value = AuthNoteState.Error(e.message ?: "Unknown error")
+                Log.e("SignUpViewModel", "Error signing up: ${e.message}")
             }
         }
     }

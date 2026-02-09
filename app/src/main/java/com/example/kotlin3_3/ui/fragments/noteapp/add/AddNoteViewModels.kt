@@ -18,7 +18,8 @@ class AddNoteViewModels(private val noteRepository: NoteRepositoryImpl) :
 
     fun precessIntent(intent: NoteIntent) {
         when (intent) {
-            is NoteIntent.AddNote -> {addNote(intent.note)}
+            is NoteIntent.AddNote -> addNote(intent.note)
+            is NoteIntent.UpdateNote -> updateNote(intent.note)
             is NoteIntent.DeleteNote -> {}
             is NoteIntent.AllNotes -> {}
         }
@@ -28,6 +29,21 @@ class AddNoteViewModels(private val noteRepository: NoteRepositoryImpl) :
         _notes.value = AddNoteState.Loading
         viewModelScope.launch {
             val result = noteRepository.addNotes(note)
+            if (result.isSuccess) {
+                _notes.value = AddNoteState.Success(note)
+            } else {
+                _notes.value = AddNoteState.Error(
+                    throwable = result.exceptionOrNull()!!,
+                    result.exceptionOrNull().toString()
+                )
+            }
+        }
+    }
+
+    private fun updateNote(note: Note) {
+        _notes.value = AddNoteState.Loading
+        viewModelScope.launch {
+            val result = noteRepository.updateNote(note)
             if (result.isSuccess) {
                 _notes.value = AddNoteState.Success(note)
             } else {

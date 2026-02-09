@@ -6,49 +6,76 @@ import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.util.Log
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlin3_3.R
 import com.example.kotlin3_3.data.local.room.entities.Note
 import com.example.kotlin3_3.databinding.NoteItemBinding
 
-class NoteAdapter(private val onDeleteClick: (Note) -> Unit) :
-    RecyclerView.Adapter<NoteAdapter.NoteViwHolder>() {
+class NoteAdapter(
+    private val onEditClick: (Note) -> Unit,
+    private val onDeleteClick: (Note) -> Unit
+) : ListAdapter<Note, NoteAdapter.NoteViewHolder>(NoteDiffCallback()) {
 
-    private var noteList = listOf<Note>()
     private var searchQuery: String = ""
+    private var titleSizeSp: Float = 16f
+    private var textSizeSp: Float = 14f
 
-    fun setNoteList(noteList: List<Note>) {
-        this.noteList = noteList
-        notifyDataSetChanged()
+    fun updateTextSize(sizeIndex: Int) {
+        titleSizeSp = when (sizeIndex) {
+            0 -> 14f
+            1 -> 16f
+            2 -> 20f
+            else -> 16f
+        }
+        textSizeSp = when (sizeIndex) {
+            0 -> 12f
+            1 -> 14f
+            2 -> 18f
+            else -> 14f
+        }
+        notifyItemRangeChanged(0, currentList.size)
     }
 
-    inner class NoteViwHolder(private val binding: NoteItemBinding) :
+    inner class NoteViewHolder(private val binding: NoteItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun onBind(notesModel: Note) {
-            if (searchQuery.isEmpty()) {
-                binding.tvTitleNote.text = notesModel.title
+
+        fun onBind(note: Note) {
+            binding.tvTitleNote.text = if (searchQuery.isEmpty()) {
+                note.title
             } else {
-                binding.tvTitleNote.text = highlightText(notesModel.title, searchQuery)
+                highlightText(note.title, searchQuery)
             }
-            binding.tvNote.text = notesModel.description
-            binding.tvDateTime.text = notesModel.date
-            binding.tvTime.text = notesModel.time
+            binding.tvNote.text = note.description
+            binding.tvDateTime.text = note.date
+            binding.tvTime.text = note.time
+
+            binding.tvTitleNote.setTextSize(TypedValue.COMPLEX_UNIT_SP, titleSizeSp)
+            binding.tvNote.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSizeSp)
+
             try {
-                val color = Color.parseColor(notesModel.color)
+                val color = Color.parseColor(note.color)
                 binding.colorNote.setCardBackgroundColor(ColorStateList.valueOf(color))
             } catch (e: IllegalArgumentException) {
-                Log.e("tag", "ошибка в адаптере в самом цвете")
+                Log.e("NoteAdapter", "Ошибка парсинга цвета: ${note.color}")
+            }
+
+            itemView.setOnClickListener { onEditClick(note) }
+            itemView.setOnLongClickListener {
+                onDeleteClick(note)
+                true
             }
         }
 
         private fun highlightText(text: String, query: String): SpannableString {
             val spannableString = SpannableString(text)
-            if (query.isEmpty()) {
-                return spannableString
-            }
+            if (query.isEmpty()) return spannableString
+
             val color = ContextCompat.getColor(binding.root.context, R.color.blackGray)
             var startIndex = text.lowercase().indexOf(query.lowercase())
             while (startIndex >= 0) {
@@ -61,33 +88,32 @@ class NoteAdapter(private val onDeleteClick: (Note) -> Unit) :
                 )
                 startIndex = text.lowercase().indexOf(query.lowercase(), endIndex)
             }
-
             return spannableString
         }
     }
 
     fun updateSearchQuery(query: String) {
         searchQuery = query
-        Log.d("NotesAdapter", "Search query updated: $query")
-        notifyDataSetChanged()
+        notifyItemRangeChanged(0, currentList.size)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViwHolder {
-        return NoteViwHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
+        return NoteViewHolder(
             NoteItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
     }
 
-    override fun getItemCount(): Int {
-        return noteList.size
+    override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
+        holder.onBind(getItem(position))
     }
 
-    override fun onBindViewHolder(holder: NoteViwHolder, position: Int) {
-        val note = noteList[position]
-        holder.onBind(note)
-        holder.itemView.setOnLongClickListener {
-            onDeleteClick(note)
-            true
+    class NoteDiffCallback : DiffUtil.ItemCallback<Note>() {
+        override fun areItemsTheSame(oldItem: Note, newItem: Note): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(oldItem: Note, newItem: Note): Boolean {
+            return oldItem == newItem
         }
     }
 }

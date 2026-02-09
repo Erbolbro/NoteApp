@@ -14,7 +14,7 @@ import com.example.kotlin3_3.data.local.room.entities.Note
 import com.example.kotlin3_3.databinding.FragmentAddNoteBinding
 import com.example.kotlin3_3.ui.fragments.intent.NoteIntent
 import com.example.kotlin3_3.utils.state.AddNoteState
-import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -23,11 +23,14 @@ class AddNoteFragment : Fragment() {
 
     private var _binding: FragmentAddNoteBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: AddNoteViewModels by inject()
+    private val viewModel: AddNoteViewModels by viewModel()
     private val handler = Handler(Looper.getMainLooper())
     private val timeFormatter = SimpleDateFormat("HH:mm", Locale.getDefault())
     private val dataFormatter = SimpleDateFormat("dd MMMM", Locale.getDefault())
     private val convertor = DateConvertors()
+
+    private var editNoteId: Int = -1
+    private var isEditMode: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,13 +42,25 @@ class AddNoteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        checkEditMode()
         setDateTime()
         observeViewModel()
         addYellowNote()
         addBlackNote()
         addBurgundy()
-//        setupTextVisibility()
         goBack()
+    }
+
+    private fun checkEditMode() {
+        arguments?.let { args ->
+            val noteId = args.getInt("noteId", -1)
+            if (noteId != -1) {
+                isEditMode = true
+                editNoteId = noteId
+                binding.someId.setText(args.getString("noteTitle", ""))
+                binding.some.setText(args.getString("noteDescription", ""))
+            }
+        }
     }
 
     private fun setDateTime() = with(binding) {
@@ -62,7 +77,7 @@ class AddNoteFragment : Fragment() {
         viewModel.notes.observe(viewLifecycleOwner) {
             when (it) {
                 is AddNoteState.Error -> {
-                    Log.e("AddNoteFragment", "Ошибка: Заметка не добавлена", it.throwable)
+                    Log.e("AddNoteFragment", "Ошибка: Заметка не сохранена", it.throwable)
                 }
 
                 AddNoteState.Loading -> {
@@ -71,89 +86,51 @@ class AddNoteFragment : Fragment() {
 
                 is AddNoteState.Success -> {
                     findNavController().navigateUp()
-                    Log.d("AddNoteFragment", "Заметка успешно добавлена")
+                    Log.d("AddNoteFragment", "Заметка успешно сохранена")
                 }
             }
         }
     }
 
-    private fun addYellowNote() = with(binding) {
-        btnHome2.setOnClickListener {
-            val title = someId.text.toString().trim()
-            val note = some.text.toString().trim()
-            if (title.isNotEmpty() && note.isNotEmpty()) {
-                viewModel.precessIntent(
-                    NoteIntent.AddNote(
-                        Note(
-                            title = title,
-                            description = note,
-                            date = dataFormatter.format(Date()),
-                            time = timeFormatter.format(Date()),
-                            color = "#EBE4C9"
-                        )
-                    )
-                )
-            } else {
-                Log.d("AddNoteFragment", "Поля не должны быть пустыми")
-            }
+    private fun saveOrUpdateNote(color: String) {
+        val title = binding.someId.text.toString().trim()
+        val description = binding.some.text.toString().trim()
+        if (title.isEmpty() || description.isEmpty()) {
+            Log.d("AddNoteFragment", "Поля не должны быть пустыми")
+            return
+        }
+        val note = Note(
+            id = if (isEditMode) editNoteId else 0,
+            title = title,
+            description = description,
+            date = dataFormatter.format(Date()),
+            time = timeFormatter.format(Date()),
+            color = color
+        )
+        if (isEditMode) {
+            viewModel.precessIntent(NoteIntent.UpdateNote(note))
+        } else {
+            viewModel.precessIntent(NoteIntent.AddNote(note))
         }
     }
 
-    private fun addBlackNote() = with(binding) {
+    private fun addYellowNote() {
+        binding.btnHome2.setOnClickListener {
+            saveOrUpdateNote("#EBE4C9")
+        }
+    }
+
+    private fun addBlackNote() {
         binding.btnBlack.setOnClickListener {
-            val title = someId.text.toString().trim()
-            val note = some.text.toString().trim()
-            if (title.isNotEmpty() && note.isNotEmpty()) {
-                viewModel.precessIntent(
-                    NoteIntent.AddNote(
-                        Note(
-                            title = title,
-                            description = note,
-                            date = dataFormatter.format(Date()),
-                            time = timeFormatter.format(Date()),
-                            color = "#191818"
-                        )
-                    )
-                )
-            } else {
-                Log.d("AddNoteFragment", "Поля не должны быть пустыми")
-            }
+            saveOrUpdateNote("#191818")
         }
     }
 
-    private fun addBurgundy() = with(binding) {
+    private fun addBurgundy() {
         binding.btnBurgundy.setOnClickListener {
-            val title = someId.text.toString().trim()
-            val note = some.text.toString().trim()
-            if (title.isNotEmpty() && note.isNotEmpty()) {
-                viewModel.precessIntent(
-                    NoteIntent.AddNote(
-                        Note(
-                            title = title,
-                            description = note,
-                            date = dataFormatter.format(Date()),
-                            time = timeFormatter.format(Date()),
-                            color = "#571818"
-                        )
-                    )
-                )
-            }
+            saveOrUpdateNote("#571818")
         }
     }
-
-//    private fun setupTextVisibility() = with(binding) {
-//        val focusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
-//            if (hasFocus) {
-//                tvReady.visibility = View.VISIBLE
-//            }
-//        }
-//        someId.onFocusChangeListener = focusChangeListener
-//        some.onFocusChangeListener = focusChangeListener
-//
-//        tvReady.setOnClickListener {
-//            tvReady.visibility = View.GONE
-//        }
-//    }
 
     private fun goBack() {
         binding.btnBack.setOnClickListener {

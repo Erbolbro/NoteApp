@@ -14,13 +14,24 @@
             android:id="@+id/action_signUpFragment_to_noteFlowFragment"
             app:popUpTo="@id/registration_graph"
             app:destination="@id/noteFlowFragment" />
+        <action
+            android:id="@+id/action_signUpFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/signInFragment"
         android:name="com.example.kotlin3_3.ui.fragments.firebase.signIn.SignInFragment"
         android:label="SignInFragment"
-        tools:layout="@layout/fragment_sign_in" />
+        tools:layout="@layout/fragment_sign_in">
+        <action
+            android:id="@+id/action_signInFragment_to_noteFlowFragment"
+            app:popUpTo="@id/registration_graph"
+            app:destination="@id/noteFlowFragment" />
+        <action
+            android:id="@+id/action_signInFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/onBoardFragment"

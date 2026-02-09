@@ -39,4 +39,15 @@
     <string name="nav_open">Open</string>
     <string name="nav_close">Close</string>
     <string name="article_title">Заголовок</string>
+    <string name="profile">Профиль</string>
+    <string name="email_label">Email</string>
+    <string name="settings_title">Настройки</string>
+    <string name="dark_theme">Тёмная тема</string>
+    <string name="text_size_label">Размер текста заметок</string>
+    <string name="text_size_small">Маленький</string>
+    <string name="text_size_medium">Средний</string>
+    <string name="text_size_large">Большой</string>
+    <string name="account_created">Аккаунт создан</string>
+    <string name="unknown_date">Дата неизвестна</string>
+    <string name="delete_note_title">Удаление заметки</string>
 </resources>

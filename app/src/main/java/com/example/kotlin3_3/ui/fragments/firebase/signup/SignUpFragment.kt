@@ -17,12 +17,13 @@ import com.example.kotlin3_3.utils.state.AuthNoteState
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SignUpFragment : Fragment() {
 
     private var _binding: FragmentSignUpBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: SignUpViewModel by inject()
+    private val viewModel: SignUpViewModel by viewModel()
     private val auth: FirebaseAuth by inject()
     private val preferencesHelper: PreferencesHelper by inject()
 
@@ -43,7 +44,7 @@ class SignUpFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupObservers()
         setupListener()
-//        goToSignIn()
+        goToSignIn()
     }
 
     private fun setupObservers() {
@@ -100,11 +101,11 @@ class SignUpFragment : Fragment() {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 
-//    private fun goToSignIn() {
-//        binding.tvGoToSignIn.setOnClickListener {
-//            findNavController().navigate(R.id.action_signUpFragment_to_signInFragment)
-//        }
-//    }
+    private fun goToSignIn() {
+        binding.tvGoToSignIn.setOnClickListener {
+            findNavController().navigate(R.id.action_signUpFragment_to_signInFragment)
+        }
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

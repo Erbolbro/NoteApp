@@ -22,6 +22,15 @@ class NoteRepositoryImpl(private val noteDao: NoteDao) {
         }
     }
 
+    suspend fun updateNote(note: Note): Result<Unit> {
+        return try {
+            noteDao.updateNote(note)
+            Result.success(Unit)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
     suspend fun deleteNote(note: Note): Result<Unit> {
         return try {
             noteDao.deleteNote(note)

@@ -21,6 +21,7 @@ class NoteAppViewModel(private val noteRepository: NoteRepositoryImpl) :
     fun precessIntent(intent: NoteIntent) {
         when (intent) {
             is NoteIntent.AddNote -> {}
+            is NoteIntent.UpdateNote -> {}
             is NoteIntent.DeleteNote -> {
                 deleteNote(intent.note)
             }

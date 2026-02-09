@@ -30,7 +30,7 @@
         android:layout_gravity="start"
         android:background="@color/black"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/fragment_profile"
+        app:headerLayout="@layout/nav_header"
         app:itemIconTint="@color/gray"
         app:itemTextColor="@color/gray"
         app:menu="@menu/navigation_menu" />
